@@ -1,0 +1,39 @@
+.hero {
+  position: relative;
+  &--overlay {
+    &::before {
+      position: absolute;
+      content: "";
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.31);
+      z-index: 1;
+    }
+  }
+  img,
+  video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .btn-play {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 5;
+    svg {
+      @include mq("tablet", "max") {
+        width: 50px;
+      }
+    }
+  }
+  .btn-sound {
+    position: absolute;
+    bottom: 30px;
+    right: 30px;
+    z-index: 5;
+  }
+}

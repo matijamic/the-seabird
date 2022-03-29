@@ -1,0 +1,59 @@
+.accordion {
+  &-item {
+    margin-bottom: 20px;
+    text-align: center;
+    border: 1px solid $primary;
+    &--opened {
+      .accordion-item__header::before {
+        transform: translateY(-50%);
+      }
+    }
+    &__header {
+      position: relative;
+      padding: 10px 20px;
+      font: 700 14px/28px "Brandon Grotesque", sans-serif;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: $black;
+      cursor: pointer;
+      &::before,
+      &::after {
+        position: absolute;
+        content: "";
+        top: 50%;
+        right: 40px;
+        width: 10px;
+        height: 2px;
+        background-color: $primary;
+        transform: translateY(-50%);
+        transition: all 0.3s ease-in-out;
+      }
+      &::before {
+        transform: translateY(-50%) rotate(90deg);
+      }
+    }
+    &__body {
+      display: none;
+      padding: 40px 20px;
+      h5 {
+        margin-bottom: 17.5px;
+        text-transform: uppercase;
+        color: $primary;
+        @include mq("desktop") {
+          font-size: 18px;
+        }
+      }
+      p {
+        max-width: 720px;
+        margin: auto;
+        margin-bottom: 20px;
+        @include bodyText(4);
+      }
+      ul {
+        margin: auto;
+        max-width: 400px;
+        text-align: left;
+      }
+    }
+  }
+}

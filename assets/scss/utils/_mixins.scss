@@ -1,0 +1,149 @@
+// -----------------------------------------------------------------------------
+// This file contains all application-wide Sass mixins.
+// -----------------------------------------------------------------------------
+
+@mixin mq($width, $type: min) {
+  @if map_has_key($breakpoints, $width) {
+    $width: map_get($breakpoints, $width);
+    @if ($type == min) {
+      $width: $width + 1px;
+    }
+    @media only screen and (#{$type}-width: $width) {
+      @content;
+    }
+  }
+}
+@mixin orientation($direction) {
+  $orientation-landscape: "(orientation:landscape)";
+  $orientation-portrait: "(orientation:portrait)";
+
+  @if $direction == landscape {
+    @media #{$orientation-landscape} {
+      @content;
+    }
+  }
+  @if $direction == portrait {
+    @media #{$orientation-portrait} {
+      @content;
+    }
+  }
+}
+
+// Typography mixins
+@mixin heading1() {
+  font-size: 40px;
+  line-height: 1.32;
+  font-weight: 500;
+  @include mq("tablet") {
+    font-size: 50px;
+  }
+  @include mq("desktop") {
+    font-size: 64px;
+  }
+}
+@mixin heading2() {
+  font-size: 32px;
+  line-height: 1.33;
+  font-weight: 500;
+  @include mq("tablet") {
+    font-size: 42px;
+  }
+  @include mq("desktop") {
+    font-size: 57px;
+  }
+}
+@mixin heading3() {
+  font-size: 32px;
+  line-height: 1.33;
+  font-weight: 500;
+  @include mq("tablet") {
+    font-size: 42px;
+  }
+  @include mq("desktop") {
+    font-size: 57px;
+  }
+}
+@mixin heading4() {
+  font-size: 24px;
+  line-height: 1;
+  font-weight: 700;
+  text-transform: uppercase;
+  @include mq("tablet") {
+    font-size: 32px;
+  }
+  @include mq("desktop") {
+    font-size: 42px;
+  }
+}
+@mixin heading5() {
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.33;
+  @include mq("tablet") {
+    font-size: 18px;
+  }
+  @include mq("desktop") {
+    font-size: 21px;
+  }
+}
+@mixin heading6() {
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1.71;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  @include mq("tablet") {
+    font-size: 13px;
+  }
+  @include mq("desktop") {
+    font-size: 14px;
+  }
+}
+@mixin bodyText($size: 3) {
+  font: 400 16px/23px "Minion Pro", sans-serif;
+  letter-spacing: 0.01em;
+  color: $secondary;
+  @if $size == 1 {
+    font: 400 17px/24px "Brandon Grotesque", sans-serif;
+    letter-spacing: 0.02em;
+    color: $black;
+  }
+  @if $size == 2 {
+    font: 300 16px/23px "Brandon Grotetsque", sans-serif;
+    letter-spacing: 0.02em;
+    color: $secondary;
+  }
+  @if $size == 4 {
+    font: 300 14px/26px "Lato", sans-serif;
+  }
+}
+
+@mixin text-opacity() {
+  &:hover {
+    opacity: 0.7;
+    transition: all ease-in-out 0.3s;
+  }
+}
+@mixin text-transition($dir: "y") {
+  @if ($dir == "y") {
+    transition: transform 0.5s cubic-bezier(0.405, 0.005, 0, 1);
+    transform: translateY(110%) translateZ(0);
+    opacity: 0;
+  }
+}
+@mixin text-transition-effect($dir: "y") {
+  @if ($dir == "y") {
+    transform: translateY(0) translateZ(0);
+    transition: transform 1.5s cubic-bezier(0.405, 0.005, 0, 1);
+    opacity: 1;
+    transition-delay: 0.15s;
+  }
+}
+@mixin pseudo-elements() {
+  position: absolute;
+  content: "";
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}

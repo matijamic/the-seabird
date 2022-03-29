@@ -1,0 +1,124 @@
+.tab {
+  margin-top: 40px;
+  .title {
+    text-align: center;
+    font: 500 24px/1.2 "Brandon Grotesque", sans-serif;
+    margin-bottom: 20px;
+    color: $black;
+    @include mq("tablet") {
+      font-size: 28px;
+    }
+    @include mq("desktop") {
+      font-size: 34px;
+    }
+  }
+  .desc {
+    margin-bottom: 40px;
+    font: 300 16px/28px "Brandon Grotesque", sans-serif;
+    text-align: center;
+    color: $black;
+  }
+  &-inner {
+    position: relative;
+    .tab-nav {
+      position: absolute;
+      display: flex;
+      top: 0;
+      left: 20px;
+      align-items: center;
+      z-index: 5;
+      @include mq("tablet") {
+        top: 37px;
+        left: 40px;
+      }
+      a {
+        position: relative;
+        margin-right: 20px;
+        font: 500 14px/3 "Brandon Grotesque", sans-serif;
+        transition: all 0.3s ease-in-out;
+        color: $white;
+        opacity: 0.18;
+        @include mq("tablet") {
+          font-size: 18px;
+        }
+        &.active {
+          opacity: 1;
+          &::after {
+            position: absolute;
+            content: "\2022";
+            left: 50%;
+            bottom: 0;
+            line-height: 0;
+            color: $white;
+            transform: translateX(-50%);
+          }
+        }
+        &:hover {
+          opacity: 0.55;
+        }
+      }
+    }
+    .tab-content {
+      position: relative;
+      display: none;
+      @include mq("tablet", "max") {
+        height: 300px;
+      }
+      &.active {
+        display: block;
+      }
+      &::after {
+        @include pseudo-elements();
+        background: rgb(0, 0, 0);
+        background: linear-gradient(
+          180deg,
+          rgba(0, 0, 0, 0.4) 0%,
+          rgba(0, 0, 0, 0) 20%,
+          rgba(0, 0, 0, 0) 80%,
+          rgba(0, 0, 0, 0.4) 100%
+        );
+      }
+      .bg-image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      &__caption {
+        position: absolute;
+        bottom: 30px;
+        width: 100%;
+        padding: 0 20px;
+        z-index: 5;
+        @include mq("phablet") {
+          display: flex;
+          align-items: baseline;
+          padding: 0 40px;
+        }
+      }
+      &__title {
+        font: 500 20px/1.88 "Brandon Grotesque", sans-serif;
+        color: $white;
+        @include mq("tablet") {
+          font-size: 34px;
+        }
+      }
+      &__link {
+        font: 500 12px/1 "Brandon Grotesque", sans-serif;
+        color: $white;
+        text-decoration: underline;
+        @include mq("phablet") {
+          margin-left: 20px;
+        }
+      }
+      .btn-white {
+        margin-left: 30px;
+        @include mq("phablet") {
+          margin-left: auto;
+        }
+        @include mq("tablet") {
+          width: 217px;
+        }
+      }
+    }
+  }
+}

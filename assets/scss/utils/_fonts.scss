@@ -1,0 +1,29 @@
+// -----------------------------------------------------------------------------
+// This file contains all @font-face declarations, if any.
+// -----------------------------------------------------------------------------
+// Brandon Grotesque
+@font-face {
+  font-family: "Brandon Grotesque";
+  font-style: "normal";
+  font-weight: 400;
+  src: url("../fonts/CoreSansC-Regular.otf") format("opentype");
+}
+@font-face {
+  font-family: "Brandon Grotesque";
+  font-style: "normal";
+  font-weight: 500;
+  src: url("../fonts/CoreSansC-Medium.otf") format("opentype");
+}
+@font-face {
+  font-family: "Brandon Grotesque";
+  font-style: "normal";
+  font-weight: 900;
+  src: url("../fonts/CoreSansC-Bold.otf") format("opentype");
+}
+// Montserrat
+@font-face {
+  font-family: "Lato";
+  font-style: "normal";
+  font-weight: 400;
+  src: url("../fonts/AvenirLTStd-Book.otf") format("opentype");
+}

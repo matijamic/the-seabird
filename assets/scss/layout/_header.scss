@@ -1,0 +1,192 @@
+// -----------------------------------------------------------------------------
+// This file contains all styles related to the header of the site/application.
+// -----------------------------------------------------------------------------
+
+// Header styles
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 30px 0;
+  z-index: $z-header;
+  transition: all 0.3s ease-in-out;
+  &.hide {
+    // transform: translateY(-300px);
+  }
+  &.scrolled {
+    background-color: $white;
+    .nav {
+      .logo-link {
+        .logo-original {
+          display: none;
+        }
+        .logo-secondary {
+          display: block;
+        }
+      }
+      .menu-items .menu-item {
+        a {
+          color: $black;
+        }
+        &-has-children::after {
+          border-top-color: $black;
+        }
+      }
+      .hamburger-inner,
+      .hamburger-inner:after,
+      .hamburger-inner:before {
+        background-color: $primary;
+      }
+    }
+  }
+  .nav {
+    display: flex;
+    align-items: center;
+
+    .logo-link {
+      position: absolute;
+      top: 0;
+      left: 0;
+      @include mq("phablet", "max") {
+        display: none;
+      }
+      @media only screen and (min-width: 1300px) {
+        left: 50%;
+        transform: translateX(-50%);
+      }
+
+      .logo-secondary {
+        display: none;
+      }
+    }
+    .menu-items {
+      display: none;
+      padding-left: 0;
+      align-items: center;
+      list-style: none;
+      @media only screen and (min-width: 1300px) {
+        display: flex;
+      }
+      .menu-item {
+        margin: 0 10px;
+        &::before {
+          content: none;
+        }
+        a {
+          color: $white;
+        }
+        &-has-children {
+          position: relative;
+          padding-right: 20px;
+          &::after {
+            position: absolute;
+            content: "";
+            width: 0;
+            height: 0;
+            border: 0 solid #0000;
+            border-left-width: 4px;
+            border-right-width: 4px;
+            border-top: 7px solid $white;
+            top: 50%;
+            right: 0;
+            transform: translateY(-50%);
+          }
+          &:hover {
+            .dropdown-menu {
+              opacity: 1;
+              visibility: visible;
+            }
+          }
+          .dropdown-menu {
+            position: absolute;
+            margin-top: 10px;
+            padding: 0;
+            opacity: 0;
+            visibility: hidden;
+            width: 100%;
+            min-width: 200px;
+            background-color: $white;
+            transition: all 0.3s ease-in-out;
+            a {
+              color: $black;
+            }
+            .nav-item {
+              padding: 10px 0;
+            }
+          }
+        }
+      }
+      &.right-menu {
+        margin-left: auto;
+        margin-right: 20px;
+      }
+    }
+    .hamburger {
+      padding: 5px 20px;
+      margin-left: auto;
+      @include mq("phablet", "max") {
+        padding: 0;
+        order: 1;
+      }
+      @media only screen and (min-width: 1300px) {
+        display: none;
+      }
+    }
+  }
+}
+#mobile-nav {
+  position: fixed;
+  top: 0;
+  left: -300px;
+  width: 300px;
+  height: 100vh;
+  background: $primary;
+  box-shadow: 0px 3px 8px rgba(0, 0, 0, 30);
+  overflow: auto;
+  z-index: 20;
+  transition: all 0.3s ease-in-out;
+  &.is-active {
+    left: 0;
+  }
+  ul {
+    padding: 0;
+    li {
+      &::before {
+        content: none;
+      }
+    }
+  }
+  .menu-items {
+    .menu-item {
+      padding: 10px 20px;
+      a {
+        color: $white;
+      }
+      &-has-children {
+        position: relative;
+        padding-right: 20px;
+        &::after {
+          position: absolute;
+          content: "";
+          width: 0;
+          height: 0;
+          border: 0 solid #0000;
+          border-left-width: 4px;
+          border-right-width: 4px;
+          border-top: 7px solid #fff;
+          top: 18px;
+          right: 20px;
+          -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+        }
+        .dropdown-menu {
+          display: none;
+        }
+      }
+    }
+    .dropdown-menu {
+      margin-top: 10px;
+    }
+  }
+}

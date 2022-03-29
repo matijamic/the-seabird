@@ -1,0 +1,63 @@
+.image-content {
+  &__inner {
+    @include mq("tablet") {
+      display: flex;
+      align-items: center;
+    }
+  }
+  &.left {
+    .images {
+      order: 1;
+    }
+    .contents {
+      @include mq("tablet") {
+        margin-left: 0;
+        margin-right: 100px;
+      }
+    }
+  }
+  .images {
+    position: relative;
+    @include mq("tablet", "max") {
+      margin-bottom: 30px;
+    }
+    .secondary-image {
+      position: absolute;
+    }
+  }
+  .contents {
+    margin-bottom: 30px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: bottom right;
+    @include mq("tablet") {
+      max-width: 500px;
+      margin-bottom: 0;
+      margin-left: 100px;
+    }
+    &.has-bg {
+      padding-bottom: 200px;
+    }
+    h5 {
+      margin-bottom: 5px;
+      color: $black;
+    }
+    h3 {
+      margin-bottom: 20px;
+    }
+    .text {
+      margin-bottom: 30px;
+      @include bodyText(4);
+      color: $black;
+    }
+    .button-group {
+      .btn {
+        margin-right: 30px;
+        @include mq("tablet", "max") {
+          margin-bottom: 20px;
+          margin-right: 0;
+        }
+      }
+    }
+  }
+}
